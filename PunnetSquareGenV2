@@ -1,0 +1,102 @@
+import java.io.*;
+import java.lang.String.*;
+@SuppressWarnings("unused")
+public class PunnetSquareGenv3 {
+
+	@SuppressWarnings({ "unused", "deprecation" })
+	public static void main(String[] args)throws IOException
+	{
+		//by Ayser and Khalid
+		
+		DataInputStream input = new DataInputStream(System.in);
+		
+		//Variables
+		
+		String typeOfPunnet, dominate, dominate2, dominate3, dominate4, recessive, recessive2, recessive3, recessive4, parent1First, parent1Second, parent2First, parent2Second;
+		
+		
+		
+		//Welcoming messages
+		System.out.println ("Welcome to the Automatic 2x2 or 4x4 punnet square maker!");
+		System.out.println ("Created by Ayser (Shark) & Khalid (Light. H)");
+		System.out.println (" ");
+		System.out.println (" ");
+
+		
+		//Prompting values for the punnet square variables
+		
+		System.out.print("What type of punnet square are you trying to make? 2x2? or 4x4 ? Please type '2x2' or '4x4': ");
+		typeOfPunnet = input.readLine();
+		System.out.println (" ");
+		
+		
+		//If user chose 2x2 punnet
+		
+		if (typeOfPunnet.equalsIgnoreCase("2x2"))
+		{
+			System.out.print("Enter the dominant trait (ex. R): ");
+			dominate = input.readLine();
+			System.out.println (" ");
+			
+			System.out.print("Enter the recessive trait (ex. r): ");
+			recessive = input.readLine();
+			System.out.println (" ");
+			
+			System.out.println ("What is the geno of the first parent (ex. If Rr. Then type the first one 'R'): ");
+			parent1First = input.readLine();
+			System.out.println (" ");
+			
+			System.out.println ("What is the geno of the first parent (ex. If Rr. Then type the second one 'r'): ");
+			parent1Second = input.readLine();
+			System.out.println (" ");
+			
+			System.out.println ("What is the genotype of the parent 2 (ex. If rr. Then type the first one 'r'): ");
+			parent2First = input.readLine();
+			System.out.println (" ");
+			
+			System.out.println ("What is the genotype of the parent 2 (ex. If rr. Then type the second one 'r'): ");
+			parent2Second = input.readLine();
+			System.out.println (" ");
+			
+			
+			//Listing them off as tables and Inputing the punnet multiplications and variables
+			
+			System.out.println ("\t\t" + parent1First + "\t" + parent1Second);
+			System.out.println (" ");
+			System.out.println ("\t" + parent2First + "\t" + parent1First + parent2First + "\t" + parent1Second + parent2First);
+			System.out.println (" ");
+			System.out.println ("\t" + parent2Second + "\t" + parent1First + parent2Second + "\t" + parent1Second + parent2Second);
+			
+			System.out.println (" ");
+			System.out.println (" ");
+			
+			//Greeting messages
+			
+			System.out.println ("There you go, thats much better!");
+			System.out.println (" ");
+			;
+			
+		}
+		
+		else if (typeOfPunnet.equalsIgnoreCase("4x4"))
+		{
+			System.out.println ("4x4 is still being developed. Only 2x2 is functioning");
+		}
+		
+		else
+		{
+			System.out.println ("You haven't entered '2x2' or '4x4'. Program now terminated.");
+		}
+		
+		//Greeting messages for the end
+		System.out.println (" ");
+		System.out.println (" ");
+		System.out.println (" ");
+		System.out.println ("Thankyou for trying our program!");
+		System.out.println ("Created by Ayser (Shark) & Khalid (Light. H).");
+		System.out.println (" ");
+		System.out.println ("For any more questions or support. Please reach us at ayser.abbas2003@gmail.com or visit our website at  "); //input weebly.database.steam here*
+		
+	}
+
+}
