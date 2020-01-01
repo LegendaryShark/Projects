@@ -1,0 +1,326 @@
+import java.io.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+@SuppressWarnings({ "unused", "serial" })
+public class OreMinerV2 extends JFrame {
+	
+	//Progress bar frame
+	
+	static JFrame f;
+	
+	static JProgressBar b;
+
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) throws IOException
+	
+	{
+		
+		DataInputStream input = new DataInputStream(System.in);
+		
+		int  count = 0, diamondNumber, inventoryDiamond = 0, inventoryStone = 0, pickaxeDurability = 100, gold = 0; 
+		
+		String userInput, userInput2, userInput3, userInput4, userInput5, userInput6, name, typeOfPickaxe = ("Default Pickaxe");
+		
+		diamondNumber = (int)(Math.random()*7)+1;
+		System.out.println("Welcome to the Sherwood Frew mine!. It has been abandoned for many years. Legend says that all the pirates use to stash their precious diamonds in there. We have chosen YOU to retrieve those diamonds. ");
+		System.out.println(" ");
+		System.out.println("..........................");
+		System.out.println("| RPG Game made by Ayser |");
+		System.out.println("..........................");
+		System.out.println(" ");
+		System.out.println("Are you ready?");
+		System.out.println(" ");
+		System.out.println("...................................................................");
+		System.out.println("You slowly creep into the mine watching every step you take.");
+		System.out.println("You spot a shiny ore!.");
+		System.out.println("...................................................................");
+		System.out.print("Type 'Mine' to mine the ore! Enter 'exit' to leave the mine: ");
+		
+		userInput = input.readLine();
+		
+		
+		while (!userInput.equalsIgnoreCase ("exit"))
+		{
+			if (pickaxeDurability <= 0)
+				
+			{
+				System.out.println ("clank! Your pickaxe has broke! Please craft another one to continue mining. Or type 'exit' to leave the mine");
+			}
+			
+		
+			else if (userInput.equalsIgnoreCase("Mine"))
+					{
+				if (diamondNumber == 3 | diamondNumber == 6 | diamondNumber == 1)
+					
+				{
+							
+					System.out.println("*CLINK* You have mined into a diamond!");
+					System.out.println("+ 1 diamond(s) added into inventory");
+					inventoryDiamond++;
+					pickaxeDurability = pickaxeDurability - 7;
+					System.out.println(" ");
+					System.out.println("Pickaxe durability is " + pickaxeDurability + "%");
+					diamondNumber = (int)(Math.random()*7)+1;
+					System.out.println("..........................");
+		
+				}
+				
+				else if (userInput.equalsIgnoreCase("Mine"))
+				{
+							System.out.println ("*chip*");
+							System.out.println ("You have mined a piece of stone");
+							System.out.println("+ 1 stone(s) added into inventory");
+							inventoryStone++;
+							pickaxeDurability = pickaxeDurability - 3;
+							System.out.println("Pickaxe durability is " + pickaxeDurability + "%");
+							System.out.println(" ");
+							diamondNumber = (int)(Math.random()*7)+1;
+							System.out.println("..........................");
+	
+					}
+			else
+			{
+				
+			}
+					}
+							
+			
+						
+			System.out.print("Type 'Mine' to mine the ore! Enter 'exit' to leave the mine: ");
+			
+			
+			userInput = input.readLine();
+				
+			}
+		
+		System.out.println ("\t\t\tInventory");
+		System.out.println (" ");
+		System.out.println ("\t\tStone(s)\t\t\tDiamond(s)");
+		System.out.println ("\t\t" + inventoryStone + "\t\t\t\t" + inventoryDiamond);
+		
+		System.out.println (" ");
+		
+		System.out.print("To craft a new pickaxe. You will need 10 stone! Type 'exit'to leave the mine.");
+		System.out.println (" ");
+		System.out.print("Then type 'craft' to craft a new pickaxe!: ");
+		System.out.println (" ");
+		System.out.print("Or type 'shop' to enter the Sherwood Merchant Store nearby to sell your goods!: ");
+		
+		userInput2 = input.readLine();
+		
+		if (userInput2.equalsIgnoreCase ("craft"))
+		{
+				System.out.println (" ");
+				System.out.println ("You currently have " + inventoryStone + " stone(s) and " + inventoryDiamond + " diamond(s)");
+				System.out.println ("Pickaxe crafting. Open panel to see progress");
+				/* MANUAL PROGRESS BAR
+				System.out.println ("Pickaxe crafting. 7.4%  [..           ]");
+				System.out.println ("Pickaxe crafting. 23.8% [.....        ]");
+				System.out.println ("Pickaxe crafting. 47.3% [.......      ]");
+				System.out.println ("Pickaxe crafting. 65.1% [.........    ]");
+				System.out.println ("Pickaxe crafting. 89.8% [............ ]");
+				System.out.println ("Pickaxe crafting. 100%  [.............]");
+				*/
+
+		        f = new JFrame("ProgressBar demo"); 
+		  
+		        // create a panel 
+		        JPanel p = new JPanel(); 
+		  
+		        // create a progressbar 
+		        b = new JProgressBar(); 
+		  
+		        // set initial value 
+		        b.setValue(0); 
+		  
+		        b.setStringPainted(true); 
+		  
+		        // add progressbar 
+		        p.add(b); 
+		  
+		        // add panel 
+		        f.add(p); 
+		  
+		        // set the size of the frame 
+		        f.setSize(200, 200); 
+		        f.setVisible(true); 
+		  
+		        fill(); 
+		        
+		        System.out.println ("Pickaxe finished crafting!");
+		        
+		  }
+		else if (userInput2.equalsIgnoreCase("shop"))
+				{
+					System.out.println (" ");
+					System.out.println ("Welcome to the Sherwood Merchant Store.");
+					System.out.println (" ");
+					System.out.println ("My name is Alvator, Iv been here for many years and have seen many miners like you before. What is your name?");
+					name = input.readLine();
+					System.out.println ("Hello " + name + ", nice to meet you! So what brings you here?");
+					System.out.println (" ");
+					System.out.println ("type 'to sell' or 'to chat'");
+					userInput3 = input.readLine();
+					
+					if (userInput3.equalsIgnoreCase("to sell"))
+					{
+						System.out.println ("\t\tShop");
+						System.out.println ("\tStone\t\tDiamond");
+						System.out.println ("\t$3\t\t$42");
+						System.out.println (" ");
+						System.out.print("Type 'sell all' to sell all your goods and take the gold: ");
+						userInput4 = input.readLine();
+						
+						if (userInput4.equalsIgnoreCase ("sell all"))
+						{
+							
+							gold = (inventoryStone * 3) + (inventoryDiamond * 42);
+							System.out.println (" ");
+							System.out.println ("CAH-CHING!");
+							System.out.println (" ");
+							System.out.println ("Alvator gave you " + gold + " gold coins!");
+							System.out.println (" ");
+							System.out.println ("You headed for the door to exit");
+						}
+						
+						else
+						{
+							System.out.println ("'Nah, I'm not trying to sell anything'");
+							System.out.println (" ");
+							System.out.println ("You headed for the door to exit");
+						}
+						
+					}
+					
+					else if (userInput3.equalsIgnoreCase("to chat"))
+						
+					{
+						System.out.println ("Enough wasting my time and being nice. Gold doesn't just grow on trees.");
+						System.out.println (" ");
+						System.out.println ("You headed for the door to exit");
+					}
+					
+					else
+					{
+						
+					}
+					
+					System.out.println ("Wait! Don't leave yet. I also have a few mining equipment if you need them of course?");
+					System.out.println (" ");
+					System.out.println ("Type 'yes' or 'no': ");
+					userInput4 = input.readLine();
+					
+					
+					
+					if (userInput4.equalsIgnoreCase("yes"))
+					{
+						System.out.println ("Ah-ha! Follow me!");
+						System.out.println (" ");
+						System.out.println ("Here is my collection...");
+						System.out.println (" ");
+						System.out.println ("\t\t\t\t\tAlvator's Collection");
+						System.out.println (" ");
+						System.out.println ("\t1. Doubled headed steel pickaxe\t\t2. Cutter Mattock\t\t3. T-Shaped pickaxe with prying tool");
+						System.out.println ("\t364 gold\t\t\t189 gold\t\t\t\t\t1095 gold");
+						System.out.println (" ");
+						System.out.println ("Which one would you like to purchase? 1, 2, or 3: ");
+						userInput5 = input.readLine();
+						
+						if (userInput5.equalsIgnoreCase("1"))
+						{
+							if (gold >= 364)
+							{
+								System.out.println ("Double headed steel pickaxe purchased for 364 gold");
+								gold = gold - 364;
+								typeOfPickaxe = ("Double headed steel pickaxe");
+							}
+							
+							else
+							{
+								System.out.println ("You don't have enough gold to purchase this item");
+							}
+						}
+						
+						else if (userInput5.equalsIgnoreCase("2"))
+						{
+							if (gold >= 189)
+							{
+								System.out.println ("Cutter Mattock purchased for 189 gold");
+								gold = gold - 189;
+								typeOfPickaxe = ("Cutter Mattock pickaxe");
+							}
+							
+							else 
+							{
+								System.out.println ("You don't have enough gold to purchase this item");
+							}
+						}
+						
+						else if (userInput5.equalsIgnoreCase("3"))
+						{
+							if (gold >= 1095)
+							{
+								System.out.println ("Double headed steel pickaxe purchased for 1095 gold");
+								gold = gold - 1095;
+								typeOfPickaxe = ("Double headed steel pickaxe");
+							}
+							
+							else
+							{
+								System.out.println ("You don't have enough gold to purchase this item");
+							}
+						}
+						
+						else
+						{
+							System.out.println ("You didn't type 1, 2, or 3");
+							System.out.println (" ");
+							System.out.println ("You think its funny wasting my time like that? GET OUT OF MY STORE. NOW!!!!");
+							
+						}
+						
+						System.out.println (" ");
+						System.out.println ("You currently have the " + typeOfPickaxe + " equipped, and are carrying " + gold + " gold");
+						
+					}
+					
+
+				}
+
+			}
+
+	 // function to increase progress bar for pickaxe
+   public static void fill() 
+   { 
+       int i = 0; 
+       try { 
+           while (i <= 100) { 
+           	
+           	 if (i > 30 && i < 70) 
+                    b.setString("Gathering materials"); 
+                else if (i > 70) 
+                    b.setString("Assembling pickaxe"); 
+                else
+                    b.setString("Pickaxe crafting"); 
+           	 
+               // fill the menu bar 
+               b.setValue(i + 10); 
+ 
+               // delay the thread 
+               Thread.sleep(1000); 
+               i += 20; 
+           } 
+       } 
+       catch (Exception e) { 
+       } 
+   }  
+	
+	
+   {
+	
+	
+	
+	}
+
+}
