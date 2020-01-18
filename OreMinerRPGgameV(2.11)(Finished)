@@ -22,13 +22,15 @@ public class OreMinerV2 extends JFrame {
         LocalDate myObj = LocalDate.now();
 
         final int count = 0;
-        int diamondNumber, inventoryDiamond = 0, inventoryStone = 0, pickaxeDurability = 100, gold = 0, recipePickaxe = 10;
+        int diamondNumber, inventoryDiamond = 0, inventoryStone = 0, pickaxeDurability = 100, gold = 0, recipePickaxe = 10, pickPocketChance;
 
         String userInput, userInput2, userInput3, userInput4, userInput5;
         final String userInput6;
         String name, typeOfPickaxe = ("Default Pickaxe");
 
         diamondNumber = (int) (Math.random() * 7) + 1;
+
+        pickPocketChance = (int) (Math.random()* 10) + 1;
 
         System.out.println("Welcome to the Sherwood Frew mine!. It has been abandoned for many years. Legend says that all the pirates use to stash their precious diamonds in there. We have chosen YOU to retrieve those diamonds. ");
         System.out.println(" ");
@@ -134,8 +136,8 @@ public class OreMinerV2 extends JFrame {
                         * System.out.println ("Pickaxe crafting. 89.8% [............ ]");
                         * System.out.println ("Pickaxe crafting. 100%  [.............]");
                         */
-
-                        f = new JFrame("ProgressBar demo");
+                        
+                        f = new JFrame("Pickaxe Crafting");
 
                         // create a panel
                         final JPanel p = new JPanel();
@@ -349,6 +351,6 @@ public class OreMinerV2 extends JFrame {
 	
 	
 	
-}
+	}
 
 }
